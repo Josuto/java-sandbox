@@ -119,7 +119,7 @@ public class MethodReferences {
         // Specialized list loader that respects the implementation type of dst
         for (User u : src)
             result.add(u);
-        Collections.sort(result, new UserComparator()::compareByName);
+        result.sort(new UserComparator()::compareByName);
         return result;
     }
     
@@ -134,7 +134,7 @@ public class MethodReferences {
      */
     private static void printUsers(
             final List<? extends User> users, 
-            final Function<List<? extends User>, List<User>> sort) {
+            final Function<List<? extends User>, List<? extends User>> sort) {
         sort.apply(users).forEach((u) -> System.out.println(u.getName()));
     }
     
